@@ -12,4 +12,20 @@ app.get('/add/:n/:m', (req, res) => {
     res.json(Number(req.params.n) + Number(req.params.m));
 });
 
+app.get('/sub/:n/:m', (req, res) => {
+    res.json(Number(req.params.n) - Number(req.params.m));
+});
+
+app.get('/mult/:n/:m', (req, res) => {
+    res.json(Number(req.params.n) * Number(req.params.m));
+});
+
+app.get('/div/:n/:m', (req, res) => {
+    if (res.json(Number(req.params.m)) == 0){
+        console.log("Division by Zero Error");
+    }
+    else{
+        res.json(Number(req.params.n) / Number(req.params.m));
+    }
+});
 app.listen(port);
