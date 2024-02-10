@@ -21,11 +21,13 @@ app.get('/mult/:n/:m', (req, res) => {
 });
 
 app.get('/div/:n/:m', (req, res) => {
-    if (res.json(Number(req.params.m)) == 0){
-        console.log("Division by Zero Error");
-    }
-    else{
-        res.json(Number(req.params.n) / Number(req.params.m));
+    const n = Number(req.params.n);
+    const m = Number(req.params.m);
+    if (m == 0){
+        res.status(400).json({error: "Division by zero error"});
+    }else{
+        const result = n / m
+        res.json({result});
     }
 });
 app.listen(port);
