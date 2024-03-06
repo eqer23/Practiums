@@ -1,11 +1,17 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors'); //cross origin resource sharing. If the origin is not the same, accept it anyways
+const { add } = require("./arithmetica");
 const app = express();
 app.use(cors());
-const port = 3000;
-// add a comment
+
+if(!process.env.PORT){
+    throw new Error(`Please specify the port number for the HTTP server with the environment variable PORT.`);
+}
+
+const port = process.env.PORT;
 app.get('/', (req, res) => {
-    res.send('Arithmetic service - Hello World!');
+    res.send('Arithmetic service - last updated 3/4/2024');
 });
 
 app.get('/add/:n/:m', (req, res) => {
