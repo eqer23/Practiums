@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/add/:n/:m', (req, res) => {
-    const result = sum(Number(req.params.n),  Number(req.params.m));
+    const result = add(Number(req.params.n),  Number(req.params.m));
     res.json({ result });
 });
 
